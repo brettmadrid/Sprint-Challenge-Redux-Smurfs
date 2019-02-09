@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { postSmurf, fetchSmurfs } from "../actions";
+import { postSmurf, fetchSmurfs, deleteSmurf } from "../actions";
 import AddSmurf from "./AddSmurf";
 import Smurf from "./Smurf";
 
@@ -16,6 +16,10 @@ class App extends Component {
     this.props.postSmurf(smurf);
   };
 
+  deleteSmurf = id => {
+    this.props.deleteSmurf(id)
+  }
+
   render() {
     return (
       <div className="App">
@@ -24,8 +28,9 @@ class App extends Component {
         <div className="smurf-container">
           {this.props.smurfs.map(smurf => (
             <Smurf
-              key={smurf.name}
+              key={smurf.id}
               smurf={smurf}
+              deleteSmurf={this.deleteSmurf}
             />
           ))}
         </div>
@@ -42,5 +47,5 @@ const mstp = state => {
 
 export default connect(
   mstp,
-  { postSmurf, fetchSmurfs }
+  { postSmurf, fetchSmurfs, deleteSmurf }
 )(App);

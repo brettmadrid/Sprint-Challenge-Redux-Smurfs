@@ -1,8 +1,11 @@
+
 body {
   color: white;
   margin: 0;
   padding: 0;
   font-family: Roboto;
+  background-image: url("./BlueNightSky.jpg");
+  font-family: 'Gloria Hallelujah', cursive;  
 }
 
 .smurf-container {
@@ -11,7 +14,6 @@ body {
 }
 
 .smurf {
-  font-family: 'Gloria Hallelujah', cursive;
   width: 250px;
   margin: 2%;
   border: 1px solid lightgrey;
