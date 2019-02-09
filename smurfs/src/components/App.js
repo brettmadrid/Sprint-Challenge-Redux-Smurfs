@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { postSmurf, fetchSmurfs, deleteSmurf } from "../actions";
+import { postSmurf, fetchSmurfs, deleteSmurf, updateSmurf, showForm } from "../actions";
 import AddSmurf from "./AddSmurf";
+import UpdateSmurf from "./UpdateSmurf"
 import Smurf from "./Smurf";
 
 import "./App.css";
@@ -17,20 +18,32 @@ class App extends Component {
   };
 
   deleteSmurf = id => {
-    this.props.deleteSmurf(id)
-  }
+    this.props.deleteSmurf(id);
+  };
+
+  showForm = id => {
+    this.props.showForm(id)
+  };
 
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <AddSmurf smurfs={this.props.smurfs} postSmurf={this.postSmurf} />
+
+        {/* render add form or update form depending on flag */}
+        {this.props.addFormVisible ? (
+          <AddSmurf smurfs={this.props.smurfs} postSmurf={this.postSmurf} />
+        ) : (
+          <UpdateSmurf smurfs={this.props.smurfs} />
+        )}
+
         <div className="smurf-container">
           {this.props.smurfs.map(smurf => (
             <Smurf
               key={smurf.id}
               smurf={smurf}
               deleteSmurf={this.deleteSmurf}
+              showForm={this.showForm}
             />
           ))}
         </div>
@@ -41,11 +54,13 @@ class App extends Component {
 
 const mstp = state => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    addFormVisible: state.addFormVisible,
+    id: state.id
   };
 };
 
 export default connect(
   mstp,
-  { postSmurf, fetchSmurfs, deleteSmurf }
+  { postSmurf, fetchSmurfs, deleteSmurf, updateSmurf, showForm }
 )(App);

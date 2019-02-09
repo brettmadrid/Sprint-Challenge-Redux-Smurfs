@@ -1,10 +1,13 @@
-import { LOADING, SUCCESS, FAILURE, POST_SUCCESS, POST_FAILURE, DELETE_SUCCESS, DELETE_FAILURE } from "../actions";
+import { LOADING, SUCCESS, FAILURE, POST_SUCCESS, POST_FAILURE, DELETE_SUCCESS, DELETE_FAILURE, UPDATE_SUCCESS, UPDATE_FAILURE } from "../actions";
 
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
   deletingSmurf: false,
+  updatingSmurf: false,
+  addFormVisible: true,
+  id: null,
   error: null
 };
 
@@ -56,6 +59,23 @@ const Reducer = (state = initialState, action) => {
         error: null
       };
       case DELETE_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: false,
+        error: action.payload
+      }
+      case UPDATE_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        deletingSmurf: false,
+        updatingSmurf: true,
+        smurfs: action.payload
+      }
+      case UPDATE_FAILURE:
       return {
         ...state,
         fetchingSmurfs: false,

@@ -9,6 +9,7 @@ const Smurf = (props) => {
         <p>Height: {props.smurf.height}</p>
       </div>
       <button type="button" onClick={ () => props.deleteSmurf(props.smurf.id)}>Remove</button>
+      <button type="button" onClick={ () => props.showForm(props.smurf.id)}>Update Info</button>
     </div>
   );
 }
