@@ -1,5 +1,41 @@
+
 body {
+  color: white;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Roboto;
+  background-image: url("./BlueNightSky.jpg");
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+fieldset {
+  border-radius: 10px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.smurf-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.smurf {
+  width: 250px;
+  margin: 2%;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+}
+
+input {
+  margin: 1% 2% 1% 0.5%;
+}
+
+input#age {
+  width: 40px;
+}
+
+input#height {
+  width: 70px;
 }
