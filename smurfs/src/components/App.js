@@ -9,6 +9,10 @@ import Smurf from "./Smurf";
 import "./App.css";
 
 class App extends Component {
+  constructor(props){
+    super(props)
+  }
+
   componentDidMount() {
     this.props.fetchSmurfs();
   }

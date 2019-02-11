@@ -22,8 +22,9 @@ class UpdateSmurf extends Component {
   }
   update = (e) => {
     e.preventDefault();
-    this.props.updateSmurf(this.state.smurf, this.props.id)
-    this.setState({smurf: {name: "", age: "", height: ""}})
+    this.props.updateSmurf(this.state.smurf, this.props.id);
+    this.props.hideForm();
+    this.setState({smurf: {name: "", age: "", height: ""}});
   }
 
   render(){
@@ -36,9 +37,9 @@ class UpdateSmurf extends Component {
             <input type="name" name="name" id="name" value={this.state.smurf.name} onChange={this.changeHandler}/>
             <label htmlFor="age">Age:</label>
             <input type="number" name="age" id="age" value={this.state.smurf.age} onChange={this.changeHandler}/>
-            <label htmlFor="email">height:</label>
-            <input type="text" name="height" id="email" value={this.state.smurf.height} onChange={this.changeHandler}/>
-            <input type="submit" value="Update Smurf"/>
+            <label htmlFor="height">height:</label>
+            <input type="text" name="height" id="height" value={this.state.smurf.height} onChange={this.changeHandler}/>
+            <input type="submit" value="Update"/>
             <input type="reset" value={`Cancel Update ${this.state.smurf.name}`} onClick={ () => this.props.hideForm()}/>
           </fieldset>
         </form>
